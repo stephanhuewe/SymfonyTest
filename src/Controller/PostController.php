@@ -49,17 +49,18 @@ class PostController extends AbstractController
             $em->persist($post);
             $em->flush();
 
+            return $this->redirect($this->generateUrl('post.index'));
         }
 
-        return $this->redirect($this->generateUrl('post.index'));
+
 
         // return a response
         //return new Response('Post was created.');
         //return $this->redirect($this->generateUrl('post.index'));
 
-        //return $this->render('post/create.html.twig', [
-          //  'form' => $form->createView()
-        //]);
+        return $this->render('post/create.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     /**
